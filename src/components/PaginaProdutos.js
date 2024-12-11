@@ -7,9 +7,13 @@ const ProductPage = () => {
   const navigate = useNavigate();
 
   const products = [
-    { id: 2, name: 'Mouse Gamer HAVIT', model: 'HV-MS9001', category: 'mouses', image: '/image.png', specs: { processor: '', memory: '', hd: '', gpu: '', os: '', battery: '6 hours' } },
-    { id: 1, name: 'Notebook Gamer Acer Nitro 16', model: 'AN515-52', category: 'notebooks', image: '/notebook.png', specs: { processor: 'Intel Core i7', memory: '16 GB', hd: '1 TB', gpu: 'NVIDIA RTX 3060', os: 'Windows 11', battery: '8 hours' } },
-    { id: 4, name: 'Monitor Gamer LG', model: 'UltraGear 24', category: 'monitors', image: '/61aIuJu0M0L.__AC_SX300_SY300_QL70_ML2_-removebg-preview.png', specs: { processor: '', memory: '', hd: '', gpu: 'Integrated Graphics', os: 'Universal', battery: '' } },
+    { id: 1, name: 'Mouse Gamer HAVIT', model: 'HV-MS9001', category: 'mouses', image: '/image.png', specs: { processor: '', memory: '', hd: '', gpu: '', os: '', battery: '6 hours' } },
+    { id: 2, name: 'Notebook Gamer Acer Nitro 16', model: 'AN515-52', category: 'notebooks', image: '/notebook.png', specs: { processor: 'Intel Core i7', memory: '16 GB', hd: '1 TB', gpu: 'NVIDIA RTX 3060', os: 'Windows 11', battery: '8 hours' } },
+    { id: 3, name: 'Notebook Gamer Acer Nitro 16', model: 'AN515-52', category: 'notebooks', image: '/notebook.png', specs: { processor: 'Intel Core i7', memory: '16 GB', hd: '1 TB', gpu: 'NVIDIA RTX 3060', os: 'Windows 11', battery: '8 hours' } },
+    { id: 4, name: 'Notebook Gamer Acer Nitro V', model: 'ANV15-51-54DL', category: 'notebooks', image: '/notebook2.webp', specs: { processor: 'Intel Core i5', memory: '8 GB', hd: '512 GB', gpu: 'NVIDIA GeForce GTX 1650', os: 'Windows 11', battery: '7 hours' } },
+    { id: 5, name: 'Mouse Gamer HAVIT', model: 'HV-MS9001', category: 'mouses', image: '/image.png', specs: { processor: '', memory: '', hd: '', gpu: '', os: '', battery: '6 hours' } },
+    { id: 6, name: 'Notebook Gamer Acer Nitro V', model: 'ANV15-51-54DL', category: 'notebooks', image: '/notebook2.webp', specs: { processor: 'Intel Core i5', memory: '8 GB DDR5', hd: '512 GB SSD', gpu: 'NVIDIA GeForce RTX 3050', os: 'Windows 11', battery: '7 hours' } },
+    { id: 7, name: 'Monitor Gamer LG', model: 'UltraGear 24', category: 'monitors', image: '/61aIuJu0M0L.__AC_SX300_SY300_QL70_ML2_-removebg-preview.png', specs: { processor: '', memory: '', hd: '', gpu: 'Integrated Graphics', os: 'Universal', battery: '' } },
   ];
 
   const product = products.find((product) => product.id === parseInt(id));

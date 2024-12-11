@@ -1,12 +1,23 @@
-import React, { useEffect, useState } from "react"; 
-import { Link, useNavigate, useSearchParams } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import './PaginaBusca.css';
 
 const HomePage = () => {
-  const [searchParams] = useSearchParams(); 
-  const initialCategory = searchParams.get('category');
-  const [selectedCategory, setSelectedCategory] = useState(initialCategory || null); 
+  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [searchTerm, setSearchTerm] = useState('');
   const navigate = useNavigate();
+
+  const handleCategoryClick = (category) => {
+    if (category === selectedCategory) {
+      setSelectedCategory(null);
+    } else {
+      setSelectedCategory(category);
+    }
+  };
+
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
 
   const products = [
     { id: 1, name: 'Mouse Gamer HAVIT', model: 'HV-MS9001', category: 'mouses', image: '/image.png' },
@@ -14,18 +25,15 @@ const HomePage = () => {
     { id: 3, name: 'Notebook Gamer Acer Nitro 16', model: 'AN515-52', category: 'notebooks', image: '/notebook.png' },
     { id: 4, name: 'Notebook Gamer Acer Nitro V', model: 'ANV15-51-54DL', category: 'notebooks', image: '/notebook2.webp' },
     { id: 5, name: 'Mouse Gamer HAVIT', model: 'HV-MS9001', category: 'mouses', image: '/image.png' },
-    { id: 6, name: 'Notebook Gamer Acer Nitro V', model: 'ANV15-51-54DL', category: 'notebooks', image: '/notebook2.webp' },
+    { id: 6, name: 'Notebook Gamer Acer Nitro V', model: 'ANV15-51-54DL', category: 'notebooks', image: '/notebook2.webp' }
   ];
 
   const filteredProducts = products.filter((product) => {
-    return selectedCategory ? product.category === selectedCategory : true;
+    const matchesCategory = selectedCategory ? product.category === selectedCategory : true;
+    const matchesSearchTerm = product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                              product.model.toLowerCase().includes(searchTerm.toLowerCase());
+    return matchesCategory && matchesSearchTerm;
   });
-
-  useEffect(() => {
-    if (initialCategory) {
-      setSelectedCategory(initialCategory); 
-    }
-  }, [initialCategory]);
 
   return (
     <div className="homepage">
@@ -33,7 +41,16 @@ const HomePage = () => {
         <button className="back-button" onClick={() => navigate(-1)}>
           Voltar
         </button>
+
         <div className="logo">Maciel Variedades</div>
+        <div className="search-bar">
+          <input
+            type="text"
+            placeholder="Pesquise produtos..."
+            value={searchTerm}
+            onChange={handleSearchChange}
+          />
+        </div>
       </header>
 
       <div className="content">
@@ -41,25 +58,25 @@ const HomePage = () => {
           <h1>Eletrônicos:</h1>
           <button
             className={selectedCategory === 'notebooks' ? 'active' : ''}
-            onClick={() => navigate('/search?category=notebooks')}
+            onClick={() => handleCategoryClick('notebooks')}
           >
             Notebooks
           </button>
           <button
             className={selectedCategory === 'mouses' ? 'active' : ''}
-            onClick={() => navigate('/search?category=mouses')}
+            onClick={() => handleCategoryClick('mouses')}
           >
             Mouses
           </button>
           <button
             className={selectedCategory === 'fones' ? 'active' : ''}
-            onClick={() => navigate('/search?category=fones')}
+            onClick={() => handleCategoryClick('fones')}
           >
             Fones
           </button>
           <button
             className={selectedCategory === null ? 'active' : ''}
-            onClick={() => navigate('/search')}
+            onClick={() => handleCategoryClick(null)}
           >
             Mostrar Todos
           </button>
@@ -73,7 +90,6 @@ const HomePage = () => {
                   <img src={product.image} alt={product.name} />
                   <h3>{product.name}</h3>
                   <p>Modelo: {product.model}</p>
-                  {}
                   <Link to={`/product/${product.id}`}>Ver Detalhes</Link>
                 </div>
               ))

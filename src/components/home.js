@@ -12,19 +12,19 @@ const Home = () => {
     { id: 'monitores', nome: 'Monitores', imagem: '/61aIuJu0M0L.__AC_SX300_SY300_QL70_ML2_-removebg-preview.png' },
   ];
 
-  const ofertas = [
-    { id: 1, nome: 'Notebook Gamer Acer Nitro V', imagem: '/note-removebg-preview.png', descricao: 'Modelo: ANV15-51-57WS' },
-    { id: 2, nome: 'Mouse Gamer HAVIT', imagem: '/image.png', descricao: 'Modelo: HV-MS1001' },
-    { id: 3, nome: 'Fone Gamer Havit', imagem: '/fone.webp', descricao: 'Modelo: HV-H2232d' },
-    { id: 4, nome: 'Monitor Gamer LG', imagem: '/61aIuJu0M0L.__AC_SX300_SY300_QL70_ML2_-removebg-preview.png', descricao: 'Modelo: UltraGear 24' },
+  const produtos = [
+    { id: 1, nome: 'Notebook Gamer Acer Nitro V', categoria: 'notebooks', imagem: '/note-removebg-preview.png', descricao: 'Modelo: ANV15-51-57WS' },
+    { id: 2, nome: 'Mouse Gamer HAVIT', categoria: 'mouses', imagem: '/image.png', descricao: 'Modelo: HV-MS1001' },
+    { id: 3, nome: 'Fone Gamer Havit', categoria: 'fones', imagem: '/fone.webp', descricao: 'Modelo: HV-H2232d' },
+    { id: 4, nome: 'Monitor Gamer LG', categoria: 'monitores', imagem: '/61aIuJu0M0L.__AC_SX300_SY300_QL70_ML2_-removebg-preview.png', descricao: 'Modelo: UltraGear 24' },
   ];
 
   const handleCategoryClick = (categoryId) => {
-    navigate(`/search?category=${categoryId}`); 
+    navigate(`/search?category=${categoryId}`);
   };
 
-  const handleProductClick = (productId) => {
-    navigate(`/product/${productId}`); 
+  const handleProductClick = (produtoCategoria) => {
+    navigate(`/product/${produtoCategoria}`); 
   };
 
   return (
@@ -44,8 +44,8 @@ const Home = () => {
       <section className="melhores-ofertas-home">
         <h2>Melhores ofertas</h2>
         <div className="grade-ofertas-home">
-          {ofertas.map((produto) => (
-            <div key={produto.id} className="oferta-home" onClick={() => handleProductClick(produto.id)}>
+          {produtos.map((produto) => (
+            <div key={produto.id} className="oferta-home" onClick={() => handleProductClick(produto.categoria)}>
               <div className="caixa-oferta-home">
                 <img src={produto.imagem} alt={produto.nome} />
                 <h3>{produto.nome}</h3>
