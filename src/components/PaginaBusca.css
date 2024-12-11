@@ -1,0 +1,133 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #9067C6;
+  color: white;
+}
+
+.homepage .header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #210123;
+  color: white;
+  padding: 20px;
+  position: relative;
+}
+
+.homepage .logo {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.homepage .search-bar {
+  width: 100%;
+  max-width: 700px;
+}
+
+.homepage .search-bar input {
+  padding: 12px;
+  border-radius: 5px;
+  border: none;
+  width: 100%;
+}
+
+.homepage .back-button {
+  position: absolute;
+  left: 20px;
+  top: 20px; 
+  background-color: #210123;
+  color: white;
+  font-size: 18px;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.homepage .back-button:hover {
+  background-color: #4a0e49;
+}
+
+.homepage .content {
+  display: flex;
+  padding: 20px;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 20px;
+}
+
+.homepage .category-filters {
+  background-color: #a967ff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 250px;
+  flex-shrink: 0;
+  margin-bottom: 20px;
+}
+
+.homepage .category-filters button {
+  display: block;
+  background-color: #fff;
+  color: black;
+  padding: 10px;
+  width: 100%;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.homepage .category-filters button:hover {
+  background-color: #210123;
+}
+
+.homepage .product-item {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  width: 100%;
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease;
+  height: 350px;
+}
+
+.homepage .product-item:hover {
+  transform: scale(1.05);
+}
+
+.homepage .product-item img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 10px;
+  display: block;
+}
+
+.homepage .product-item h3,
+.homepage .product-item p {
+  margin: 15px 0;
+  font-size: 1.1em;
+}
+
+.homepage .product-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 70px;
+  justify-items: center;
+  align-items: center;
+}
